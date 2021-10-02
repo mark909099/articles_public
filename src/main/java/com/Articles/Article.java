@@ -10,13 +10,11 @@ public class Article {
     private String title;
     private String content;
     private int year;
-    private boolean published;
 
-    public Article( String title, String content, int year, boolean published) {
+    public Article( String title, String content, int year) {
         this.title = title;
         this.content = content;
         this.year = year;
-        this.published = published;
     }
 
     public String getId() { return id; }
@@ -41,13 +39,5 @@ public class Article {
 
     public void setYear(int year) {
         this.year = year;
-    }
-
-    public boolean isPublished() {
-        return published;
-    }
-
-    public void setPublished(boolean published) {
-        this.published = published;
     }
 }

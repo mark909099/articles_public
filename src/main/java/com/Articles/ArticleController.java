@@ -3,8 +3,6 @@ package com.Articles;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
-import org.springframework.data.mongodb.core.aggregation.*;
-import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -51,20 +49,6 @@ public class ArticleController {
         }
     }
 
-    @GetMapping("/articles/published")
-    public ResponseEntity<List<Article>> findByPublished() {
-        try {
-            List<Article> articles = articleRepository.findByPublished(true);
-
-            if (articles.isEmpty()) {
-                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-            }
-                return new ResponseEntity<>(articles, HttpStatus.OK);
-        } catch (Exception e) {
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }
-
     @GetMapping("/articles/new_to_old")
     public ResponseEntity<List<Article>> findNewToOld() {
         try {
@@ -81,11 +65,10 @@ public class ArticleController {
         }
     }
 
-
     @PostMapping("/articles")
     public ResponseEntity<Article> createArticle(@RequestBody Article article) {
         try {
-            Article _article = articleRepository.save(new Article(article.getTitle(), article.getContent(), article.getYear(), article.isPublished()));
+            Article _article = articleRepository.save(new Article(article.getTitle(), article.getContent(), article.getYear()));
             return new ResponseEntity<>(_article, HttpStatus.CREATED);
         } catch (Exception e) {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
@@ -101,7 +84,6 @@ public class ArticleController {
             _article.setTitle(article.getTitle());
             _article.setContent(article.getContent());
             _article.setYear(article.getYear());
-            _article.setPublished(article.isPublished());
             return new ResponseEntity<>(articleRepository.save(_article), HttpStatus.OK);
         } else {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
