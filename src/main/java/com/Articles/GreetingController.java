@@ -14,6 +14,6 @@ public class GreetingController {
                 "Check \"{CURRENT_URL}/api/articles\" for GET, POST and DELETE. " +
                 "Check \"{CURRENT_URL}/api/articles/{id}\" for GET and PUT. " +
                 "Check \"{CURRENT_URL}/api/articles/new_to_old\" for GET. " +
-                "The JSON object format is: {\"name\":\"some string\", \"content\":\"some string 2\", \"year\":some integer}");
+                "The JSON object format is: {\"title\":\"some string\", \"content\":\"some string 2\", \"year\":some integer}");
     }
 }
