@@ -1,6 +1,6 @@
-URL: http://tut1-env.eba-qsni3jse.us-east-1.elasticbeanstalk.com/
+URL: https://spring-mongodb1.portfolio-mark.com
 
-Pure backend Java project built with spring framework and MongoDB. Full CRUD operations.
+Java backend project built with spring framework and MongoDB. Full CRUD operations.
 
 detailed explanation:
 
